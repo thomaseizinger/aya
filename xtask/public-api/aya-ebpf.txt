@@ -81,9 +81,9 @@ pub mod aya_ebpf::maps
 pub mod aya_ebpf::maps::array
 pub struct aya_ebpf::maps::array::Array<T>
 impl<T> aya_ebpf::maps::array::Array<T>
-pub fn aya_ebpf::maps::array::Array<T>::get(&self, index: u32) -> core::option::Option<&T>
-pub fn aya_ebpf::maps::array::Array<T>::get_ptr(&self, index: u32) -> core::option::Option<*const T>
-pub fn aya_ebpf::maps::array::Array<T>::get_ptr_mut(&self, index: u32) -> core::option::Option<*mut T>
+pub fn aya_ebpf::maps::array::Array<T>::get(&self, index: u32) -> core::result::Result<&T, aya_ebpf::maps::array::OutOfBounds>
+pub fn aya_ebpf::maps::array::Array<T>::get_ptr(&self, index: u32) -> core::result::Result<*const T, aya_ebpf::maps::array::OutOfBounds>
+pub fn aya_ebpf::maps::array::Array<T>::get_ptr_mut(&self, index: u32) -> core::result::Result<*mut T, aya_ebpf::maps::array::OutOfBounds>
 pub const fn aya_ebpf::maps::array::Array<T>::pinned(max_entries: u32, flags: u32) -> aya_ebpf::maps::array::Array<T>
 pub fn aya_ebpf::maps::array::Array<T>::set(&self, index: u32, value: &T, flags: u64) -> core::result::Result<(), aya_ebpf_cty::od::c_long>
 pub const fn aya_ebpf::maps::array::Array<T>::with_max_entries(max_entries: u32, flags: u32) -> aya_ebpf::maps::array::Array<T>
@@ -109,6 +109,34 @@ impl<T> core::borrow::BorrowMut<T> for aya_ebpf::maps::array::Array<T> where T: 
 pub fn aya_ebpf::maps::array::Array<T>::borrow_mut(&mut self) -> &mut T
 impl<T> core::convert::From<T> for aya_ebpf::maps::array::Array<T>
 pub fn aya_ebpf::maps::array::Array<T>::from(t: T) -> T
+pub struct aya_ebpf::maps::array::OutOfBounds
+impl core::error::Error for aya_ebpf::maps::array::OutOfBounds
+impl core::fmt::Debug for aya_ebpf::maps::array::OutOfBounds
+pub fn aya_ebpf::maps::array::OutOfBounds::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::fmt::Display for aya_ebpf::maps::array::OutOfBounds
+pub fn aya_ebpf::maps::array::OutOfBounds::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::marker::Freeze for aya_ebpf::maps::array::OutOfBounds
+impl core::marker::Send for aya_ebpf::maps::array::OutOfBounds
+impl core::marker::Sync for aya_ebpf::maps::array::OutOfBounds
+impl core::marker::Unpin for aya_ebpf::maps::array::OutOfBounds
+impl core::panic::unwind_safe::RefUnwindSafe for aya_ebpf::maps::array::OutOfBounds
+impl core::panic::unwind_safe::UnwindSafe for aya_ebpf::maps::array::OutOfBounds
+impl<T, U> core::convert::Into<U> for aya_ebpf::maps::array::OutOfBounds where U: core::convert::From<T>
+pub fn aya_ebpf::maps::array::OutOfBounds::into(self) -> U
+impl<T, U> core::convert::TryFrom<U> for aya_ebpf::maps::array::OutOfBounds where U: core::convert::Into<T>
+pub type aya_ebpf::maps::array::OutOfBounds::Error = core::convert::Infallible
+pub fn aya_ebpf::maps::array::OutOfBounds::try_from(value: U) -> core::result::Result<T, <T as core::convert::TryFrom<U>>::Error>
+impl<T, U> core::convert::TryInto<U> for aya_ebpf::maps::array::OutOfBounds where U: core::convert::TryFrom<T>
+pub type aya_ebpf::maps::array::OutOfBounds::Error = <U as core::convert::TryFrom<T>>::Error
+pub fn aya_ebpf::maps::array::OutOfBounds::try_into(self) -> core::result::Result<U, <U as core::convert::TryFrom<T>>::Error>
+impl<T> core::any::Any for aya_ebpf::maps::array::OutOfBounds where T: 'static + ?core::marker::Sized
+pub fn aya_ebpf::maps::array::OutOfBounds::type_id(&self) -> core::any::TypeId
+impl<T> core::borrow::Borrow<T> for aya_ebpf::maps::array::OutOfBounds where T: ?core::marker::Sized
+pub fn aya_ebpf::maps::array::OutOfBounds::borrow(&self) -> &T
+impl<T> core::borrow::BorrowMut<T> for aya_ebpf::maps::array::OutOfBounds where T: ?core::marker::Sized
+pub fn aya_ebpf::maps::array::OutOfBounds::borrow_mut(&mut self) -> &mut T
+impl<T> core::convert::From<T> for aya_ebpf::maps::array::OutOfBounds
+pub fn aya_ebpf::maps::array::OutOfBounds::from(t: T) -> T
 pub mod aya_ebpf::maps::bloom_filter
 pub struct aya_ebpf::maps::bloom_filter::BloomFilter<T>
 impl<T> aya_ebpf::maps::bloom_filter::BloomFilter<T>
@@ -760,9 +788,9 @@ impl<T> core::convert::From<T> for aya_ebpf::maps::XskMap
 pub fn aya_ebpf::maps::XskMap::from(t: T) -> T
 pub struct aya_ebpf::maps::Array<T>
 impl<T> aya_ebpf::maps::array::Array<T>
-pub fn aya_ebpf::maps::array::Array<T>::get(&self, index: u32) -> core::option::Option<&T>
-pub fn aya_ebpf::maps::array::Array<T>::get_ptr(&self, index: u32) -> core::option::Option<*const T>
-pub fn aya_ebpf::maps::array::Array<T>::get_ptr_mut(&self, index: u32) -> core::option::Option<*mut T>
+pub fn aya_ebpf::maps::array::Array<T>::get(&self, index: u32) -> core::result::Result<&T, aya_ebpf::maps::array::OutOfBounds>
+pub fn aya_ebpf::maps::array::Array<T>::get_ptr(&self, index: u32) -> core::result::Result<*const T, aya_ebpf::maps::array::OutOfBounds>
+pub fn aya_ebpf::maps::array::Array<T>::get_ptr_mut(&self, index: u32) -> core::result::Result<*mut T, aya_ebpf::maps::array::OutOfBounds>
 pub const fn aya_ebpf::maps::array::Array<T>::pinned(max_entries: u32, flags: u32) -> aya_ebpf::maps::array::Array<T>
 pub fn aya_ebpf::maps::array::Array<T>::set(&self, index: u32, value: &T, flags: u64) -> core::result::Result<(), aya_ebpf_cty::od::c_long>
 pub const fn aya_ebpf::maps::array::Array<T>::with_max_entries(max_entries: u32, flags: u32) -> aya_ebpf::maps::array::Array<T>
